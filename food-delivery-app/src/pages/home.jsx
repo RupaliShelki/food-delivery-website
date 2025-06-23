@@ -2,6 +2,7 @@ import React from "react";
 import Nav from "../components/nav";
 import catagoriees from "../categories";
 import Card from "../components/card";
+import { food_items } from "../food";
 function home() {
   return (
     <>
@@ -18,7 +19,11 @@ function home() {
             </div>
           ))}
         </div>
-        <Card />
+        <div className="w-full flex-wrap gap-5 px-5 justify-center items-center pt-8">
+          {food_items.map((item) => (
+            <Card  key={item.id} name={item.food_name} image={item.food_image} price={item.price} type={item.food_type} id={item.id} />
+          ))}
+        </div>
       </div>
     </>
   );
