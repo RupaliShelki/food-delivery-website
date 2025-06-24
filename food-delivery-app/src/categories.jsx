@@ -12,46 +12,46 @@ import { LuPizza } from "react-icons/lu";
 const catagoriees=[
     {
         id:1,
-        name:"all",
+        name:"All",
         image: <RiGalleryView2  className="w-[60px] h-[60px] text-red-400"/>
 
     },
      {
         id:2,
-        name:"breakfast",
+        name:"Breakfast",
         image:<MdOutlineFreeBreakfast className="w-[60px] h-[60px] text-red-400" />
 
 
     },
      {
         id:3,
-        name:"soup",
+        name:"Soups",
         image: <LuSoup className="w-[60px] h-[60px] text-red-400" />
 
 
     },
      {
         id:4,
-        name:"pasta",
+        name:"Pasta",
         image: <CiBowlNoodles className="w-[60px] h-[60px] text-red-400" />
 
 
     },
      {
         id:5,
-        name:"main cource",
+        name:"Main course",
         image: <GiOpenedFoodCan className="w-[60px] h-[60px] text-red-400" />
 
     },
      {
         id:6,
-        name:"pizza",
+        name:"Pizza",
         image: <LuPizza className="w-[60px] h-[60px] text-red-400" />
 
     },
      {
         id:7,
-        name:"burger",
+        name:"Burger",
         image:<MdOutlineLunchDining className="w-[60px] h-[60px] text-red-400" />
 
 
