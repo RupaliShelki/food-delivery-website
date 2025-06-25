@@ -6,10 +6,10 @@ import { dataContext} from "../contex/userContex";
 import { food_items } from "../food";
 
 function nav() {
-  let [input, Setinput,cat, setCat] = useContext(dataContext);
+  let {input, Setinput,cat, setCat}= useContext(dataContext);
   useEffect(()=>{
-    let newList=food_items.filter((item)=>item.food_name.includes(input))
-    setCat(newList)
+    let newlist=food_items.filter((item)=>item.food_name.includes(input)||item.food_name.toLowerCase().includes(input))
+    setCat(newlist)
   },[input])
   return (
     <div className="w-full h-[100px] flex justify-between items-center px-30 md-px-8 ">
