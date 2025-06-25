@@ -7,7 +7,7 @@ function userContex({children}) {
     }
   return (
     <div>
-        <dataContex.Provider value={data}>
+    <dataContex.Provider value={data}>
     {children}
     </dataContex.Provider>
     </div>
