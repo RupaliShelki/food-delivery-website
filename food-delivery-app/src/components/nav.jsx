@@ -6,7 +6,7 @@ import { dataContext} from "../contex/userContex";
 import { food_items } from "../food";
 
 function nav() {
-  let {input, Setinput,cat, setCat}= useContext(dataContext);
+  let {input, Setinput,cat, setCat, showcart,setShowcart}= useContext(dataContext);
   useEffect(()=>{
     let newlist=food_items.filter((item)=>item.food_name.includes(input)||item.food_name.toLowerCase().includes(input))
     setCat(newlist)
@@ -30,7 +30,7 @@ function nav() {
           value={input}
         />
       </form>
-      <div className="w-18 h-18 bg-white flex justify-center items-center rounded-md shadow-md relative text-[16px] md:text-[20px] ">
+      <div className="w-18 h-18 bg-white flex justify-center items-center rounded-md shadow-md relative text-[16px] md:text-[20px] " onClick={()=>{setShowcart(true)}}>
         <span className=" absolute top-0 right-4 font-bold">0</span>
         <LuShoppingBag className="w-[30px] h-[30px]" />
       </div>

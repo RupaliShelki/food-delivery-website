@@ -5,9 +5,10 @@ import Card from "../components/card";
 import { food_items } from "../food";
 import { dataContext } from "../contex/userContex";
 import { RxCross2 } from "react-icons/rx";
+import Card2 from "../components/card2";
 
 function home() {
-  let { cat, setCat, input } = useContext(dataContext);
+  let { cat, setCat, input, showcart,setShowcart } = useContext(dataContext);
 
   function filterCat(category) {
     console.log(`here is category u click ${category}`);
@@ -56,12 +57,18 @@ function home() {
             />
           ))}
         </div>
-        <div className="w-[40vw] h-[100vh] fixed top-0 right-0 bg-white shadow-xl">
+        {/* {(showcart? */}
+          <div className= {`w-[40vw] h-[100vh] fixed top-0 right-0 bg-white shadow-xl transition-all duration-500 ${showcart?"translate-x-0":"translate-x-full"}`}>
           <header className=" w-[100%] flex justify-between p-6 font-bold items-center">
             <span>Order Item</span>
-              <RxCross2 className=" cursor-pointer w-[30px] h-[30px] hover:text-gray-600 " />
+              <RxCross2 className=" cursor-pointer w-[30px] h-[30px] hover:text-gray-600 " onClick={()=>{
+                setShowcart(false)
+              }} />
           </header>
+          <Card2/>
         </div>
+        {/* :null)} */}
+        
       </div>
     </>
   );
