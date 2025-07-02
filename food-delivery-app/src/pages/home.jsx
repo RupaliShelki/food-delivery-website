@@ -58,14 +58,14 @@ function home() {
           ))}
         </div>
         {/* {(showcart? */}
-          <div className= {`w-[40vw] h-[100vh] fixed top-0 right-0 bg-white shadow-xl transition-all duration-500 ${showcart?"translate-x-0":"translate-x-full"}`}>
+          <div className= {` w-full md:w-[40vw] h-[100vh] fixed top-0 right-0 bg-white shadow-xl transition-all duration-500 ${showcart?"translate-x-0":"translate-x-full"}`}>
           <header className=" w-[100%] flex justify-between p-6 font-bold items-center">
             <span>Order Item</span>
               <RxCross2 className=" cursor-pointer w-[30px] h-[30px] hover:text-gray-600 " onClick={()=>{
                 setShowcart(false)
               }} />
           </header>
-          <Card2/>
+          {/* <Card2/> */}
         </div>
         {/* :null)} */}
         
