@@ -31,7 +31,7 @@ function card({ name, image, id, price, type }) {
       </div>
       <button
         className="w-full p-3 bg-red-400  text-white rounded-lg hover:bg-amber-600 transition-all shadow-lg cursor-pointer "
-        onClick={() => dispatch(AddItem(id))}
+        onClick={() => dispatch(AddItem({id:id, name:name, price:price, image:image, qty:1}))}
       >
         Add to Dish
       </button>
