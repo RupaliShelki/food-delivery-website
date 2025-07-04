@@ -8,7 +8,7 @@ function card2({id,name,price,image,qty}) {
   let dispatch=useDispatch()
   return (
     <div className="w-full h-[130px] py-2 px-5  shadow-lg">
-      <div className="w-[90%] h-full  gap-5 inline-flex">
+      <div className="w-[90%] h-full  gap-3 inline-flex">
         <div className="w-[60%] h-full overflow-hidden rounded-lg gap-[20px]">
           <img src={image} alt="" className="object-cover" />
         </div>

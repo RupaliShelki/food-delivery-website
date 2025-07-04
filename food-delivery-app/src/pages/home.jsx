@@ -29,6 +29,11 @@ function home() {
 
   let items = useSelector((state) => state.cart);
 
+  let subtotal= items.reduce((total,item)=>total+item.price,0)
+  let deliveryFee=20;
+  let taxes= subtotal*0.5/100
+  let total= subtotal+deliveryFee+taxes
+
   return (
     <>
       <div className="w-full min-h-screen bg-amber-100">
@@ -79,6 +84,20 @@ function home() {
             {items.map((item)=>(
             <Card2 id={item.id} name={item.name} price={item.price} image={item.image} qty={item.qty} />
             ))}
+          </div>
+          <div className="w-full border-t-2  border-gray-400 mt-7 flex flex-col gap-4 p-8">
+            <div className="w-full flex justify-between items-center">
+              <span className="text-lg text-gray-600 font-semibold">subtotal</span>
+              <span className=" text-amber-600 font-semibold text-lg">Rs {subtotal}</span>
+            </div>
+             <div className="w-full flex justify-between items-center">
+              <span className="text-lg text-gray-600 font-semibold">Delivery Fees</span>
+              <span className=" text-amber-600 font-semibold text-lg">Rs {deliveryFee}</span>
+            </div>
+             <div className="w-full flex justify-between items-center">
+              <span className="text-lg text-gray-600 font-semibold">Taxes</span>
+              <span className=" text-amber-600 font-semibold text-lg">Rs {taxes}</span>
+            </div>
           </div>
         </div>
         {/* :null)} */}
