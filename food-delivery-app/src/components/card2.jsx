@@ -1,8 +1,11 @@
 import React from "react";
 import image1 from "../assets/image1.avif";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import { useDispatch } from "react-redux";
+import { RemoveItem } from "../redux/cartSlice";
 
 function card2({id,name,price,image,qty}) {
+  let dispatch=useDispatch()
   return (
     <div className="w-full h-[130px] py-2 px-5  shadow-lg">
       <div className="w-[90%] h-full  gap-5 inline-flex">
@@ -25,7 +28,7 @@ function card2({id,name,price,image,qty}) {
         </div>
         <div className="w-[60%] h-full flex flex-col items-end p-5 gap-3.5">
           <span>RS {price}/-</span>
-          <RiDeleteBin5Line className="text-red-600" />
+          <RiDeleteBin5Line className="text-red-600 cursor-pointer" onClick={()=>dispatch(RemoveItem(id))} />
         </div>
       </div>
     </div>
