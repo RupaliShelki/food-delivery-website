@@ -29,7 +29,7 @@ function home() {
 
   let items = useSelector((state) => state.cart);
 
-  let subtotal= items.reduce((total,item)=>total+item.price,0)
+  let subtotal= items.reduce((total,item)=>total+item.qty*item.price,0)
   let deliveryFee=20;
   let taxes= subtotal*0.5/100
   let total= Math.floor(subtotal+deliveryFee+taxes)
