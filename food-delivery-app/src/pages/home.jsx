@@ -32,7 +32,7 @@ function home() {
   let subtotal= items.reduce((total,item)=>total+item.price,0)
   let deliveryFee=20;
   let taxes= subtotal*0.5/100
-  let total= subtotal+deliveryFee+taxes
+  let total= Math.floor(subtotal+deliveryFee+taxes)
 
   return (
     <>
@@ -67,7 +67,7 @@ function home() {
         </div>
         {/* {(showcart? */}
         <div
-          className={` w-full md:w-[40vw] h-[100vh] fixed top-0 right-0 bg-white shadow-xl transition-all duration-500 ${
+          className={` w-full md:w-[40vw] h-[100vh] flex  overflow-auto flex-col items-center fixed top-0 right-0 p-2 bg-white shadow-xl transition-all duration-500 ${
             showcart ? "translate-x-0" : "translate-x-full"
           }`}
         >
@@ -85,7 +85,7 @@ function home() {
             <Card2 id={item.id} name={item.name} price={item.price} image={item.image} qty={item.qty} />
             ))}
           </div>
-          <div className="w-full border-t-2  border-gray-400 mt-7 flex flex-col gap-4 p-8">
+          <div className="w-full border-t-2 border-b-2  border-gray-400 mt-7 flex flex-col gap-4 p-8">
             <div className="w-full flex justify-between items-center">
               <span className="text-lg text-gray-600 font-semibold">subtotal</span>
               <span className=" text-amber-600 font-semibold text-lg">Rs {subtotal}</span>
@@ -99,8 +99,12 @@ function home() {
               <span className=" text-amber-600 font-semibold text-lg">Rs {taxes}</span>
             </div>
           </div>
+          <div className="w-full flex justify-between items-center px-9 py-3">
+              <span className="text-lg text-gray-600 font-semibold">Total</span>
+              <span className=" text-amber-600 font-semibold text-lg">Rs {total}</span>
+            </div>
+           <button  className="w-[80%] p-3 bg-red-400  text-white rounded-lg hover:bg-amber-600 transition-all shadow-lg cursor-pointer ">Place Order</button>
         </div>
-        {/* :null)} */}
       </div>
     </>
   );
