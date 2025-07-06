@@ -29,10 +29,13 @@ function home() {
 
   let items = useSelector((state) => state.cart);
 
-  let subtotal= items.reduce((total,item)=>total+item.qty*item.price,0)
-  let deliveryFee=20;
-  let taxes= subtotal*0.5/100
-  let total= Math.floor(subtotal+deliveryFee+taxes)
+  let subtotal = items.reduce(
+    (total, item) => total + item.qty * item.price,
+    0
+  );
+  let deliveryFee = 20;
+  let taxes = (subtotal * 0.5) / 100;
+  let total = Math.floor(subtotal + deliveryFee + taxes);
 
   return (
     <>
@@ -80,30 +83,64 @@ function home() {
               }}
             />
           </header>
+          {/* --------after adding item------------------ */}
           <div className="w-full mt-9 flex flex-col gap-8">
-            {items.map((item)=>(
-            <Card2 id={item.id} name={item.name} price={item.price} image={item.image} qty={item.qty} />
+            {items.map((item) => (
+              <Card2
+                id={item.id}
+                name={item.name}
+                price={item.price}
+                image={item.image}
+                qty={item.qty}
+              />
             ))}
           </div>
-          <div className="w-full border-t-2 border-b-2  border-gray-400 mt-7 flex flex-col gap-4 p-8">
-            <div className="w-full flex justify-between items-center">
-              <span className="text-lg text-gray-600 font-semibold">subtotal</span>
-              <span className=" text-amber-600 font-semibold text-lg">Rs {subtotal}</span>
+          {/* -----------bill--------------------------- */}
+          {items.length > 0 ? (
+            <>
+              <div className="w-full border-t-2 border-b-2  border-gray-400 mt-7 flex flex-col gap-4 p-8">
+                <div className="w-full flex justify-between items-center">
+                  <span className="text-lg text-gray-600 font-semibold">
+                    subtotal
+                  </span>
+                  <span className=" text-amber-600 font-semibold text-lg">
+                    Rs {subtotal}
+                  </span>
+                </div>
+                <div className="w-full flex justify-between items-center">
+                  <span className="text-lg text-gray-600 font-semibold">
+                    Delivery Fees
+                  </span>
+                  <span className=" text-amber-600 font-semibold text-lg">
+                    Rs {deliveryFee}
+                  </span>
+                </div>
+                <div className="w-full flex justify-between items-center">
+                  <span className="text-lg text-gray-600 font-semibold">
+                    Taxes
+                  </span>
+                  <span className=" text-amber-600 font-semibold text-lg">
+                    Rs {taxes}
+                  </span>
+                </div>
+              </div>
+              <div className="w-full flex justify-between items-center px-9 py-3">
+                <span className="text-lg text-gray-600 font-semibold">
+                  Total
+                </span>
+                <span className=" text-amber-600 font-semibold text-lg">
+                  Rs {total}
+                </span>
+              </div>
+              <button className="w-[80%] p-3 bg-red-400  text-white rounded-lg hover:bg-amber-600 transition-all shadow-lg cursor-pointer ">
+                Place Order
+              </button>
+            </>
+          ) : (
+            <div className=" text-center text-2xl text-amber-600 pt-5">
+              cart is empty
             </div>
-             <div className="w-full flex justify-between items-center">
-              <span className="text-lg text-gray-600 font-semibold">Delivery Fees</span>
-              <span className=" text-amber-600 font-semibold text-lg">Rs {deliveryFee}</span>
-            </div>
-             <div className="w-full flex justify-between items-center">
-              <span className="text-lg text-gray-600 font-semibold">Taxes</span>
-              <span className=" text-amber-600 font-semibold text-lg">Rs {taxes}</span>
-            </div>
-          </div>
-          <div className="w-full flex justify-between items-center px-9 py-3">
-              <span className="text-lg text-gray-600 font-semibold">Total</span>
-              <span className=" text-amber-600 font-semibold text-lg">Rs {total}</span>
-            </div>
-           <button  className="w-[80%] p-3 bg-red-400  text-white rounded-lg hover:bg-amber-600 transition-all shadow-lg cursor-pointer ">Place Order</button>
+          )}
         </div>
       </div>
     </>
